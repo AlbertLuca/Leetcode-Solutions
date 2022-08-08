@@ -1,0 +1,32 @@
+/* Optimal Solution using a hashmap by storing value/index into key value pair
+and finding the difference of current iterator and the target within a hashmap.
+Time complexity: O(n)
+Space complexity: O(n)
+1. Create a hashmap to store value and index into key-value pair
+2. Iterate through vector nums
+3. if the difference of the target and the current iterator is found within the hashmap
+return the current iterator and index value using []operator within the hasmap
+else 
+add value of the current iterator and the current iterators index
+
+Note: indices.end() specifies the past-the-end of the hashmap. 
+it is used when to specify past-the-end of the hashmap  by checking all previous 
+values using find().
+if find() does not find the given key find() points to past-the-end, hence end()
+*/
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int,int> indices;
+        
+        for(int i = 0; i < nums.size(); i++){
+          if(indices.find(target - nums[i]) != indices.end())
+          {
+              return {indices[target - nums[i]], i };
+        }
+            indices[nums[i]] = i;
+    }
+        return {};
+    }
+    
+};
