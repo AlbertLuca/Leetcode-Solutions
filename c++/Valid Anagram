@@ -20,3 +20,35 @@ public:
         return true;
     }
 };
+/*
+Optimal solution using a hashmap, unordered set
+Time complexity: O(n)
+Space complexity: O(n)
+1. Create a hashmap for both strings s and t
+2. iterate through string s
+3. for each iteration insert character into hashmap and update the value by
+== # of occurences of each character
+4. Compare both hashmap
+return true if both are equivalent
+return false if counts are not equivalent
+*/
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        map<char,int> sMap;
+        map<char,int> tMap;
+        
+        if( s.length() != t.length())
+            return false;
+        
+        for(int i = 0; i < s.length(); i++)
+        {
+            sMap[s[i]]++;
+            tMap[t[i]]++;
+        }
+        
+        if(sMap == tMap)
+            return true;
+        return false;
+    }
+};
