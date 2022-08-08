@@ -1,0 +1,28 @@
+/*
+Optimized solution using associative container, <unordered_set> hashmap
+Time complexity: O(n)
+Space complexity: O(n) 
+1.Create a hashmap target
+2. Iterate through vector nums 
+3. check if current index exists within hashmap
+if index exists, return true
+else return false
+4. Exit for loop returns false as no duplicate is found
+*/
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        unordered_set<int> target;
+        
+        for(int i = 0; i<nums.size(); i++)
+        {
+            if(target.count(nums[i]))
+            {
+               return true;
+            }
+            
+            target.insert(nums[i]);
+        }
+        return false;
+    }
+};
