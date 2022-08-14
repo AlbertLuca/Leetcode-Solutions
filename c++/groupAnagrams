@@ -1,0 +1,31 @@
+/* Brute force method using hashtable and sort.
+Time complexity: O(m * n log on), m = # of strings searched by hashtable, n log n from sorting
+Space complexity: O(m)
+1. create a hashtable
+2. iterate through vector string strs and sort each string 
+3. create a vector vector string anagrams
+4. push back mapped value of strings that are anagrams to their corresponding key
+5. return vector vector string
+
+*/
+
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+    unordered_map<string, vector<string>> hashtable;
+        
+        for(string s: strs){
+            string t = s;
+            sort(t.begin(),t.end());
+            hashtable[t].push_back(s);
+    }
+        
+        vector<vector<string>> anagrams;
+        for(auto q : hashtable){
+            anagrams.push_back(q.second);
+        }
+        
+        return anagrams;
+
+    }
+};
