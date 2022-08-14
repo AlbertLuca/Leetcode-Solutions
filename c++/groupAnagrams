@@ -29,3 +29,46 @@ public:
 
     }
 };
+
+/* Optimal solution using hashtable and counting # of char in each string
+Time complexity: O(m * n)
+Space complexity: O(m * n)
+1. create a hashtable
+2. iterate through input string vector and get corresponding key value count of each char
+3. push back key into hash table and corresponding anagram
+4. iterate and return mapped values of anagrams
+
+*/
+
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        unordered_map<string, vector<string>> hashtable;
+        
+        for(int i = 0; i < strs.size(); i++){
+            string key = getKey(strs[i]);    // get string key
+            hashtable[key].push_back(strs[i]);   // insert into hashtable
+        }
+        
+        vector<vector<string>> anagrams;
+        
+        for(auto q : hashtable){
+            anagrams.push_back(q.second);
+        }
+        return anagrams;
+    }
+    
+private: 
+    string getKey(string str){
+        vector<int> count(26);
+        for(int j = 0; j < str.size(); j++){
+            count[str[j] - 'a']++;
+        }
+        
+        string key = "";
+        for(int i = 0; i < 26; i++){
+            key.append(to_string(count[i] +'a'));
+        }
+        return key;
+    }
+};
