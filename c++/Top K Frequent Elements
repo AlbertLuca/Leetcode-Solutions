@@ -1,0 +1,34 @@
+/* Optimized solution, counting the number of characters in a hash table,
+ reversing the key value pair into a 2d vector and returning a vector k size
+ Time complexity: O(n)
+ Space complexity: O(n)
+ 1. Create a hashtable to count # of char 
+ 2. insert in hashtable through iteration
+ 3. create a 2d vector for frequency and values
+ 4. iterate throught 2d vector and return ans vector
+*/class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int, int> count;
+        
+        for(int i = 0; i < nums.size(); i++){
+            count[nums[i]]++;
+        }
+        
+        vector<vector<int>> buckets(nums.size()+1);
+        for(auto q : count){
+            buckets[q.second].push_back(q.first);
+        }
+        
+        vector<int> ans;
+        for(int i = nums.size(); i >=0 ; i--){
+            for(int num : buckets[i])
+                ans.push_back(num);
+            if(ans.size() == k)
+                break;
+            }
+        
+        
+        return ans;
+    }
+};
