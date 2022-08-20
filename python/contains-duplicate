@@ -1,0 +1,41 @@
+# Optimized Solution using hashtable 
+# Time Complexity: O(n)
+# Space Complexity: O(n)
+# 1. create a hashmap
+# 2. iterate through nums 
+# 3. if i in hashmap, return true
+# 4. else add i as key and 1 as value for counted duplicate
+# 5. return false is no duplicate found
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        ans = {}
+        
+        for i in nums:
+            if i in ans:
+                return True
+            ans[i] = 1
+                
+        return False
+        
+# Brute force Solution using sort()
+# Time complexity: O(n log n) sort() uses Timsort Alg=
+# Space compelxity: O(n)
+# 1. sort array of nums
+# 2. iterate through nums
+# 3. if next iteration is equal to current iteration 
+# return true
+# else exit for loop and return false
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        nums.sort()
+
+        l = len(nums)
+        if l < 2:
+            return False
+        
+        for i in range(l - 1):
+            if nums[i] == nums[i+1]:
+                return True
+            
+        return False
