@@ -1,0 +1,21 @@
+# Optimized Solution using hashmap
+# Time complexity: O(n)
+# Space complexity: O(n)
+# 1. create a hashmap to store diff as key and index as value
+# 2. iterate through array of nums
+# 3. if difference of target - n is found in hashmap
+# return current iteration index and value of difference found in hashmap
+# else insert number in current iteration as key and the its index as its value
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        ans = {}
+        
+        for i, n in enumerate(nums):
+            diff = target - n
+            
+            if diff in ans:
+                return {i, ans[diff]}
+            
+            ans[n] = i
+
+            
