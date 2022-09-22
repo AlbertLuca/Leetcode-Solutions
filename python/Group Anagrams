@@ -1,0 +1,22 @@
+# Optimized Solution: O(mn), m = num of strings, n = avg len of a string
+# 1. Create a hashmap (defaultdict does not throw a KeyError if key is not found, but create a default value instead)
+# 2. iterate through list of strs
+# 3. create a count array of 0 with 26 indices
+# 4. iterate through each char in each str
+# 5. find the difference of the ASCII values of char and and letter a to add to count array
+# 6. in hashmap, add count of chars to keys and original input strings as value
+# 7. return values of hashmap
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        anagrams = collections.defaultdict(list)
+        
+        for st in strs:
+            count = [0] * 26
+            
+            for c in st:
+                count[ord(c) - ord("a")] += 1
+                
+            anagrams[tuple(count)].append(st)
+            
+        return anagrams.values()
