@@ -1,4 +1,4 @@
-## Set()
+# Set()
 A built-in function used to create a set. A set is an unordered collection of unique elements, meaning that is does not allow duplicate values.
 Sets are useful when you need to store and operate on unique items without caring about their order. 
 
@@ -6,11 +6,11 @@ You can create a set:
 my_set = ([1,2,3,4])
 my_set = {1, 2, 3, 4}
 
-# Properties of a Set
+## Properties of a Set
 - Unordered: The elements in a set are not stored in any particular order
 - Unique: A set cannot contain duplicate elements
 
-# Common Set Operations
+## Common Set Operations
 1. Adding Elements: 
 my_set.add(5)
 
@@ -49,7 +49,7 @@ print(sym_diff_set)
 output: 
 {1,2,4,5}
 
-# When to use sets
+## When to use sets
 - Removing duplicates: if you have a list with duplicates and you need a collection with unique
 elements, a set is ideal
 
@@ -59,7 +59,7 @@ elements, a set is ideal
 
 
 
-# Are sets hash tables?
+## Are sets hash tables?
 Yes, sets in Python are implemented using hash tables, which is why they have some of the characteristics associated with hash tables, such as:
 
 - **Fast Lookups:** Elements in a set can be checked for membership (e.g., `x in my_set`) in average constant time, `O(1)`, due to the underlying hash table.
@@ -154,3 +154,15 @@ Time Complexity: Python's sort() uses Timsort, which has a time complexity of O(
 Summary of Parameters
 reverse: If True, the list elements are sorted as if each comparison were reversed (descending order).
 key: A function that serves as a key for the sort comparison.
+
+
+# Character Counting with Counter:
+
+Counter from the collections module creates a dictionary where keys are characters and values are their counts in the string.
+For example, Counter("anagram") will return {'a': 3, 'n': 1, 'g': 1, 'r': 1, 'm': 1}.
+Length Check:
+
+If the lengths of the two strings differ, they can't be anagrams, so we immediately return False.
+Comparison of Counts:
+
+The function returns True if the character counts match for both strings, indicating that the strings are anagrams.
