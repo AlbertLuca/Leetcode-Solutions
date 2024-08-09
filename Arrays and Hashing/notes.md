@@ -97,3 +97,60 @@ While sets are implemented using hash tables, they are simpler than dictionaries
 - **Dictionaries use hash tables to map keys to values**, allowing for fast lookups, insertions, and deletions.
 
 So, to summarize: sets in Python **are** based on hash tables, which explains their efficiency and their constraints like uniqueness and lack of order.
+
+## Sort()
+The `sort()` method is used to sort the elements of list in place, meaning it modifies the original list. The sorting is done in ascening order by default,
+but you can customize it with optional parameters
+
+
+In Python, the sort() method is used to sort the elements of a list in place, meaning it modifies the original list. The sorting is done in ascending order by default, but you can customize it with optional parameters.
+
+# Basic Usage
+Here’s an example of sorting a list of numbers:
+
+numbers = [3, 1, 4, 1, 5, 9, 2, 6]
+numbers.sort()
+print(numbers)
+
+Output:
+
+[1, 1, 2, 3, 4, 5, 6, 9]
+
+# Sorting in Descending Order
+To sort a list in descending order, use `reverse` parameter:
+
+numbers = [3, 1, 4, 1, 5, 9, 2, 6]
+numbers.sort(reverse=True)
+print(numbers)
+
+Output:
+
+[9, 6, 5, 4, 3, 2, 1, 1]
+
+# Sorting with a Custom Key
+You can customize the sort order by providing a key function. This function is applied to each element in the list before comparison.
+
+For example, to sort a list of strings by their length:
+
+words = ["apple", "banana", "cherry", "date"]
+words.sort(key=len)
+print(words)
+
+Output:
+['date', 'apple', 'banana', 'cherry']
+
+# Important points:
+In-Place Sorting: The sort() method modifies the original list. If you need a new sorted list and want to keep the original list unchanged, use the sorted() function instead, which returns a new sorted list.
+
+original_list = [3, 1, 4, 1, 5, 9, 2, 6]
+sorted_list = sorted(original_list)
+print(sorted_list)  # [1, 1, 2, 3, 4, 5, 6, 9]
+print(original_list)  # [3, 1, 4, 1, 5, 9, 2, 6]
+
+Stability: Python's sort() is stable, meaning that when two records have the same key, their original order is preserved.
+
+Time Complexity: Python's sort() uses Timsort, which has a time complexity of O(n log n) in the average and worst case.
+
+Summary of Parameters
+reverse: If True, the list elements are sorted as if each comparison were reversed (descending order).
+key: A function that serves as a key for the sort comparison.
