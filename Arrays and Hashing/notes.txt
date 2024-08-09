@@ -1,0 +1,99 @@
+## Set()
+A built-in function used to create a set. A set is an unordered collection of unique elements, meaning that is does not allow duplicate values.
+Sets are useful when you need to store and operate on unique items without caring about their order. 
+
+You can create a set:
+my_set = ([1,2,3,4])
+my_set = {1, 2, 3, 4}
+
+# Properties of a Set
+- Unordered: The elements in a set are not stored in any particular order
+- Unique: A set cannot contain duplicate elements
+
+# Common Set Operations
+1. Adding Elements: 
+my_set.add(5)
+
+2. Removing elements:
+my_set.remove(3)
+
+3. Set Union:
+Combines elements from two sets, removing duplicates:
+set1 = {1, 2, 3}
+set2 = {3, 4, 5}
+
+union_set = set1._union(set2)
+
+4. Set intersection:
+Returns elements that are common in both sets.
+intersection_Set = set1.intersection(set2)
+
+print(intersection_set)
+
+output: 
+{3}
+
+5. Set difference:
+Returns elements that are in one set but not in the other
+difference_set = set1.difference(set2)
+
+print(difference_set)
+{1,2}
+
+6. Set symmetric Difference:
+Returns elements that are in either set but not in both
+sym_diff_set = set1.symmetric_difference(set2)
+
+print(sym_diff_set)
+
+output: 
+{1,2,4,5}
+
+# When to use sets
+- Removing duplicates: if you have a list with duplicates and you need a collection with unique
+elements, a set is ideal
+
+- Membership tests: Sets are optimized for checking if an elements is part of the set (`O(1)` time complexity)
+
+- Set operations: For mathematical operations like union, intersection, amd difference, sets provide built-in methods
+
+
+
+# Are sets hash tables?
+Yes, sets in Python are implemented using hash tables, which is why they have some of the characteristics associated with hash tables, such as:
+
+- **Fast Lookups:** Elements in a set can be checked for membership (e.g., `x in my_set`) in average constant time, `O(1)`, due to the underlying hash table.
+  
+- **Unique Elements:** Each element in a set must be unique, which is enforced by the hash table. If you try to add a duplicate element, it will simply overwrite the existing entry.
+
+- **Unordered Collection:** Sets do not maintain any order of elements because the underlying hash table does not store elements in a sorted manner. The order in which elements are stored in a hash table is determined by the hash function and is generally non-deterministic.
+
+### How Hash Tables Work in Sets
+
+A hash table is a data structure that stores key-value pairs, but in the case of sets, it stores only keys (the values are implicit). When you add an element to a set:
+
+1. **Hashing:** The element is passed through a hash function, which converts it into a fixed-size integer value known as a hash code.
+   
+2. **Indexing:** This hash code is then used as an index to place the element in the hash table. If two different elements produce the same hash code (a collision), Python handles this using techniques like open addressing or chaining.
+
+3. **Uniqueness Check:** If the hash code already exists in the table (meaning the element is already in the set), the new element will not be added, ensuring uniqueness.
+
+### Example
+
+Here's an example that shows how sets leverage hashing:
+
+```python
+my_set = {"apple", "banana", "cherry"}
+print("banana" in my_set)  # This check is very fast because of the hash table.
+```
+
+In this example, checking whether `"banana"` is in `my_set` is efficient due to the hash table's ability to quickly locate the element based on its hash code.
+
+### Comparison with Hash Tables (Dictionaries)
+
+While sets are implemented using hash tables, they are simpler than dictionaries (which are also hash-table-based) because:
+
+- **Sets store only keys, not key-value pairs.**
+- **Dictionaries use hash tables to map keys to values**, allowing for fast lookups, insertions, and deletions.
+
+So, to summarize: sets in Python **are** based on hash tables, which explains their efficiency and their constraints like uniqueness and lack of order.
